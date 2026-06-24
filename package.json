@@ -1,0 +1,26 @@
+{
+  "name": "download-manager",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cross-platform desktop download manager",
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm dev:desktop",
+    "dev:desktop": "pnpm --filter @download-manager/desktop dev",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm --filter @download-manager/shared build && pnpm --filter @download-manager/downloader build && pnpm --filter @download-manager/video build && pnpm --filter @download-manager/database build && pnpm -r typecheck",
+    "test": "pnpm --dir node_modules/.pnpm/better-sqlite3@12.11.1/node_modules/better-sqlite3 run build-release && pnpm --filter @download-manager/shared build && pnpm --filter @download-manager/downloader build && pnpm --filter @download-manager/video build && pnpm --filter @download-manager/database build && pnpm -r test",
+    "package:mac": "pnpm --filter @download-manager/desktop package:mac",
+    "package:mac:arm64": "pnpm --filter @download-manager/desktop package:mac:arm64",
+    "package:mac:x64": "pnpm --filter @download-manager/desktop package:mac:x64",
+    "package:win": "pnpm package:win11",
+    "package:win11": "pnpm --filter @download-manager/desktop package:win11"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.12",
+    "node-gyp": "^10.3.1",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  },
+  "packageManager": "pnpm@9.7.0"
+}
