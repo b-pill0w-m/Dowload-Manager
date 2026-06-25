@@ -124,6 +124,9 @@ async function chooseSaveFolder(attachToMainWindow: boolean): Promise<string | n
     if (!pickerWindow.isDestroyed()) {
       pickerWindow.destroy();
     }
+    if (process.platform === "darwin") {
+      app.hide();
+    }
   }
 }
 
